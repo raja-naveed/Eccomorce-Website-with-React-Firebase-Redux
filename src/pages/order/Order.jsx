@@ -9,6 +9,17 @@ function Order() {
   const context = useContext(myContext)
   const { mode, loading, order } = context
   console.log("order", order)
+  
+  const limitText = (text, limit) => {
+    const words = text.split(' ');
+    if (words.length <= limit) {
+      return text;
+    } else {
+      const truncatedText = words.slice(0, limit).join(' ');
+      return `${truncatedText}...`;
+    }
+  };
+
   return (
     <Layout>
   {loading && <Loader />}
@@ -54,7 +65,7 @@ function Order() {
                                 color: mode === "dark" ? "white" : "",
                               }}
                             >
-                              {item.description.slice(0, 100)} {/* Limit description */}
+                              {limitText(item.description, 10)}
                             </p>
                             <p
                               className="mt-1 text-xs text-gray-700"

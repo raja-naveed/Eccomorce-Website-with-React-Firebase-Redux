@@ -46,6 +46,16 @@ function Cart() {
   const [pincode, setPincode] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
 
+  const limitText = (text, limit) => {
+    const words = text.split(' ');
+    if (words.length <= limit) {
+      return text;
+    } else {
+      const truncatedText = words.slice(0, limit).join(' ');
+      return `${truncatedText}...`;
+    }
+  };
+
   const buyNow = async () => {
     if (name === '' || address === '' || pincode === '' || phoneNumber === '') {
       return toast.error('All fields are required', {
@@ -111,7 +121,7 @@ function Cart() {
                   <div className="sm:ml-4 sm:flex sm:w-full sm:justify-between">
                     <div className="mt-5 sm:mt-0">
                       <h2 className="text-lg font-bold text-gray-900" style={{ color: mode === 'dark' ? 'white' : '' }}>{title}</h2>
-                      <h2 className="text-sm  text-gray-900" style={{ color: mode === 'dark' ? 'white' : '' }}>{description}</h2>
+                      <h2 className="text-sm  text-gray-900" style={{ color: mode === 'dark' ? 'white' : '' }}>{limitText(description, 20)}</h2>
                       <p className="mt-1 text-xs font-semibold text-gray-700" style={{ color: mode === 'dark' ? 'white' : '' }}>Rs {price}</p>
                     </div>
                     <div onClick={() => deleteCart(item)} className="mt-4 flex justify-between sm:space-y-6 sm:mt-0 sm:block sm:space-x-6">
