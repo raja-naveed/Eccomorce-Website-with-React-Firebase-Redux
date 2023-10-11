@@ -5,7 +5,9 @@ import { FaUser, FaCartPlus } from 'react-icons/fa';
 import { AiFillShopping, AiFillPlusCircle, AiFillDelete } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
 import myContext from '../../../context/myContext';
-import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd';
+import { DragDropContext, Draggable } from 'react-beautiful-dnd';
+import { Droppable } from 'react-beautiful-dnd';
+
 
 function DashboardTab() {
   const context = useContext(myContext);
@@ -19,10 +21,9 @@ function DashboardTab() {
     const [reorderedItem] = reorderedProducts.splice(result.source.index, 1);
     reorderedProducts.splice(result.destination.index, 0, reorderedItem);
 
-    // Update the state with the new order of products
     setProduct(reorderedProducts);
-    console.log("Drage", recordedProducts)
-  };
+    console.log("Dragged", reorderedProducts);
+};
 
   const add = () => {
     window.location.href = '/addproduct';
@@ -34,6 +35,26 @@ function DashboardTab() {
         <div className="tab container mx-auto">
           <Tabs defaultIndex={0} className=" ">
             <TabList className="md:flex md:space-x-8 bg-  grid grid-cols-2 text-center gap-4   md:justify-center mb-10 ">
+              <Tab>
+                <button
+                  type="button"
+                  className="font-medium border-b-2 hover:shadow-purple-700 border-purple-500 text-purple-500 rounded-lg text-xl shadow-[inset_0_0_8px_rgba(0,0,0,0.6)]  px-5 py-1.5 text-center bg-[#605d5d12] "
+                >
+                  <div className="flex gap-2 items-center">
+                    <MdOutlineProductionQuantityLimits />Products
+                  </div>
+                </button>
+              </Tab>
+              <Tab>
+                <button
+                  type="button"
+                  className="font-medium border-b-2 hover:shadow-purple-700 border-purple-500 text-purple-500 rounded-lg text-xl shadow-[inset_0_0_8px_rgba(0,0,0,0.6)]  px-5 py-1.5 text-center bg-[#605d5d12] "
+                >
+                  <div className="flex gap-2 items-center">
+                    <MdOutlineProductionQuantityLimits />Products
+                  </div>
+                </button>
+              </Tab>
               <Tab>
                 <button
                   type="button"
@@ -113,9 +134,7 @@ function DashboardTab() {
                           <tbody className="">
                             {product.map((item, index) => (
                               <Draggable
-                                key={item.id}
-                                draggableId={item.id}
-                                index={index}
+                                draggableId={String(index+1)}
                               >
                                 {(provided) => (
                                   <tr
