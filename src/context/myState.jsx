@@ -191,7 +191,7 @@ function MyState(props) {
             products, setProducts, addProduct, product,
             edithandle, updateProduct, deleteProduct, order,
             user, searchkey, setSearchkey,filterType,setFilterType,
-            filterPrice,setFilterPrice
+            filterPrice,setFilterPrice, setProduct
         }}>
             {props.children}
         </myContext.Provider>
