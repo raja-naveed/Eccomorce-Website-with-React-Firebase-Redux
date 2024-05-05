@@ -2,12 +2,12 @@ import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
 const firebaseConfig = {
-    apiKey: "AIzaSyDjypFTcIT7YB0mr_XAzn_Bw0SkCLNVubA",
-    authDomain: "ecommorce-c9c4d.firebaseapp.com",
-    projectId: "ecommorce-c9c4d",
-    storageBucket: "ecommorce-c9c4d.appspot.com",
-    messagingSenderId: "781328186798",
-    appId: "1:781328186798:web:303055c41ffdf9c9759c3f"
+    apiKey: "AIzaSyDB2kkyb8bhEEldd0hJs_KD5YlnwwwqZC4",
+    authDomain: "eccomorce-updated.firebaseapp.com",
+    projectId: "eccomorce-updated",
+    storageBucket: "eccomorce-updated.appspot.com",
+    messagingSenderId: "993302932455",
+    appId: "1:993302932455:web:17bd76f4bdbd176330eb42"
 };
 
 const app = initializeApp(firebaseConfig);
